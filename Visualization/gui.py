@@ -26,7 +26,9 @@ import tkintermapview
 def browseFiles():
     filename = filedialog.askopenfilename(initialdir="/",
                                           title="Select a File",
-                                          filetypes=(("Databases",
+                                          filetypes=(("MATLAB files",
+                                                        "*.mat*"),
+                                                        ("Databases",
                                                          "*.db*"),
                                                         ("SQLite",
                                                          "*.sqlite*"),
@@ -47,8 +49,71 @@ root.configure(background="light blue")
 
 #Create widgets
 label1 = tk.Label(root, text="Flock Force", font=('bold',50), background="light blue",anchor='n')
-freq = tk.Button(root, text='Frequency', width = 10, height = 2, background = 'cyan', font=('bold',15), highlightbackground='blue', highlightthickness=5, borderwidth=5)
-power = tk.Button(root, text='Power', width = 10, height = 2, background = 'red', font=('bold',15), highlightbackground='dark red', highlightthickness=5, borderwidth=5)
+#frequency dropdown menu
+drop1 = tk.StringVar()
+# Dropdown menu options
+options1 = [
+    "3 GHz",
+    "4 GHz",
+    "5 GHz",
+    "6 GHz",
+    "7 GHz",
+    "8 GHz",
+    "9 GHz"
+]
+
+# initial menu text
+drop1.set("Frequency")
+
+# Create Dropdown menu
+freq = tk.OptionMenu(root, drop1, *options1)
+freq["width"] = 8
+freq["height"] = 2
+freq["highlightbackground"] = 'blue'
+freq["highlightthickness"] = 2
+freq["borderwidth"] = 2
+freq["background" ] = "cyan"
+freq["activebackground" ] = "blue"
+freq["font"] = 'Bold 15'
+freq["menu"]["background"] = "gray"
+freq["menu"]["foreground"] = "black"
+freq["menu"]["font"] = "Bold 15"
+freq["menu"]["selectcolor"] = "green"
+freq["menu"]["activeborderwidth"] = '4'
+
+#power dropdown menu
+drop2 = tk.StringVar()
+# Dropdown menu options
+options2 = [
+    "3 W",
+    "4 W",
+    "5 W",
+    "6 W",
+    "7 W",
+    "8 W",
+    "9 W"
+]
+
+# initial menu text
+drop2.set("Power")
+
+# Create Dropdown menu
+power = tk.OptionMenu(root, drop2, *options2)
+power["width"] = 8
+power["height"] = 2
+power["highlightbackground"] = 'dark red'
+power["highlightthickness"] = 2
+power["borderwidth"] = 2
+power["background"] = "red"
+power["activebackground" ] = "dark red"
+power["font"] = 'Bold 15'
+power["menu"]["background"] = "gray"
+power["menu"]["foreground"] = "black"
+power["menu"]["font"] = "Bold 15"
+power["menu"]["selectcolor"] = "green"
+power["menu"]["activeborderwidth"] = '4'
+
+#power = tk.Button(root, text='Power', width = 10, height = 2, background = 'red', font=('bold',15), highlightbackground='dark red', highlightthickness=5, borderwidth=5)
 location = tk.Button(root, text='Location', width = 10, height = 2, background = 'lime', font=('bold',15), highlightbackground='green', highlightthickness=5, borderwidth=5)
 files = tk.Button(root,command=browseFiles, text='File Explorer', width = 10, height = 2, font=('bold',15), highlightbackground='white', highlightthickness=5, borderwidth=5)
 #mapspace = tk.Label(root, width = 10, height = 2, background = "gray", borderwidth=30, border=300)

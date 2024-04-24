@@ -4,7 +4,7 @@ Cesium.Ion.defaultAccessToken =
 const viewer = new Cesium.Viewer("cesiumContainer");
 viewer.scene.primitives.add(Cesium.createOsmBuildings());
 
-const dataPoint = { longitude: -74.0323752, latitude: 40.7433066, height: +27.32 };
+const dataPoint = { longitude: -74.023, latitude: 40.745, height: +27.32 };
 const pointEntity = viewer.entities.add({
     description: `First data point at (${dataPoint.longitude}, ${dataPoint.latitude})`,
     position: Cesium.Cartesian3.fromDegrees(dataPoint.longitude, dataPoint.latitude, dataPoint.height),
