@@ -19,13 +19,17 @@
     <link href="style.css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="file://localhost/Workspace/FlockForce/ff_logo.png">
   </head>
-  <body>
+</div>
+  <body style="background-color:powderblue;">
+    <button type="button" onclick="alert('Hello World!')">FREQUENCY</button>
+    <button class = "relative">POWER</button>
+    <button class = "relative2">LOCATION</button>
+    <button class = "relative3">FILE EXPLORER</button>
     <div id="cesiumContainer"></div>
-    
-    <script src="running_ces.js">
-    
-
+        <script>
+          document.getElementById("cesiumContainer").style.margin = "0px 0px 0px 75px";
     </script>
-
+    <script src="running_ces.js">
+    </script>
   </body>
 </html>
