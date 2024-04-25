@@ -20,22 +20,22 @@ head{
   font-family:"Lucida Console", "Courier New"; 
 }
 #cesiumContainer {
-  width:100%;
+  width:130%;
   height:87%;
 }
 header{
-  margin-left: 280px;
-  margin-right: 675px;
+  margin-left: 320px;
+  margin-right: 669px;
   font-size: 17px;
   background-color: white;
   font-family:"Lucida Console", "Courier New"; 
 }
 button{
-  margin-left: 75px;
+  margin-left: 10px;
   margin-top: 100px;
   margin-bottom: 100px;
   height: 65px;
-  width: 225px;
+  width: 250px;
   border-radius: 8px;
   font-size: 25px;
   font-family:"Lucida Console", "Courier New";
@@ -44,10 +44,11 @@ button:hover {
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 select{
-  margin-left: 75px;
+  margin-right: 154px;
+  margin-left: -50px;
   margin-top: 200px;
   height: 65px;
-  width: 233px;
+  width: 260px;
   border-radius: 8px;
   font-size: 25px;
   font-family:"Lucida Console", "Courier New";
@@ -57,19 +58,20 @@ select:hover {
 }
 button.relative {
   position: relative;
-  margin-left: -179px;
+  margin-left: -316px;
+  margin-right: 0px;
   top: 28%;
   background-color: #04AA6D;
 }
 button.relative2 {
   position: relative;
-  margin-left: -178px;
+  margin-left: -160px;
   top: 42%;
   background-color: #008CBA;
 }
 button.relative3 {
   position: relative;
-  margin-left: -177px;
+  margin-left: -162px;
   top: 56%;
   background-color: #f44336;
 }
