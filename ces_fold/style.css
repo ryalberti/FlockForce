@@ -2,7 +2,7 @@ html,
 body {
   overflow: hidden;
   margin-left:0px;
-  margin-top: 5px;
+  margin-top: 0px;
   margin-right: 5px;
   margin-bottom: 5px;
   padding: 0px;
@@ -24,7 +24,7 @@ head{
   height:87%;
 }
 header{
-  margin-left: 320px;
+  margin-left: 339px;
   margin-right: 669px;
   font-size: 17px;
   background-color: white;
