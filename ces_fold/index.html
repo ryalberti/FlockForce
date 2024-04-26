@@ -25,13 +25,13 @@
 <!--  <button type="button" onclick="alert('Hello World!')">FREQUENCY</button> -->
   <select name="FREQUENCY">
     <option selected="FREQUENCY">FREQUENCY</option>
-    <option value="feature1">Feature 1</option>
-    <option value="feature2">Feature 2</option>
-    <option value="feature2">Feature 3</option>
+    <option value="feature1" onclick="center();">2.4 GHz</option>
+    <option value="feature2" onclick="center5();">5.0 GHz</option>
+    <option value="feature2" onclick="center7();">7.3 MHz</option>
   </select>
     <button class = "relative">POWER</button>
-    <button class = "relative2">LOCATION</button>
-    <button class = "relative3">FILE EXPLORER</button>
+    <button class = "relative2" onclick="center();">LOCATION</button>
+    <button class = "relative3" id="fileexplorer" onclick="openFile();">FILE EXPLORER</button>
     <div id="cesiumContainer">
           <header>
       <!-- Header content goes here -->
