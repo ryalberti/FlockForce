@@ -52,7 +52,6 @@ const pointEntity3 = viewer.entities.add({
 
 // Moving entity stuff 
 
-//time 
 //Make sure viewer is at the desired time.
 const start = Cesium.JulianDate.fromDate(new Date(2018, 11, 12, 15));
 const totalSeconds = 10;
@@ -67,12 +66,19 @@ viewer.clock.currentTime = start.clone();
 viewer.clock.clockRange = Cesium.ClockRange.LOOP_STOP;
 viewer.timeline.zoomTo(start, stop);
 
-// moving position 
-const position5 = new Cesium.SampledPositionProperty();
-const startPosition = new Cesium.Cartesian3.fromDegrees(40.749,-74.034,70.000);
-const endPosition  = new Cesium.Cartesian3.fromDegrees(40.741,-74.025,91);
-const velocityVectorProperty = new Cesium.VelocityVectorProperty(position5,false);
+
+// Create a path for our vehicle by lerping between two positions.
+const position = new Cesium.SampledPositionProperty();
+const startPosition = new Cesium.Cartesian3.fromDegrees(-74.034,40.749,70.000);
+const endPosition  = new Cesium.Cartesian3.fromDegrees(-74.025,40.741,91);
+// A velocity vector property will give us the entity's speed and direction at any given time.
+const velocityVectorProperty = new Cesium.VelocityVectorProperty(
+  position,
+  false
+);
 const velocityVector = new Cesium.Cartesian3();
+// Store the wheel's rotation over time in a SampledProperty.
+
 
 const numberOfSamples = 100;
 for (let i = 0; i <= numberOfSamples; ++i) {
@@ -84,27 +90,31 @@ for (let i = 0; i <= numberOfSamples; ++i) {
   );
 
   // Lerp using a non-linear factor so that the vehicle accelerates.
-  const locationFactor = Math.pow(factor, 2); 
+  const locationFactor = Math.pow(factor, 2);
   const location = Cesium.Cartesian3.lerp(
     startPosition,
     endPosition,
     locationFactor,
     new Cesium.Cartesian3()
   );
-  position5.addSample(time, location);
-//   // Rotate the wheels based on how fast the vehicle is moving at each timestep.
+  position.addSample(time, location);
+  // Rotate the wheels based on how fast the vehicle is moving at each timestep.
   velocityVectorProperty.getValue(time, velocityVector);
+  const metersPerSecond = Cesium.Cartesian3.magnitude(velocityVector);
+
 }
 
 
-// // Add our vehicle model.
+// Add our vehicle model.
 const vehicleEntity = viewer.entities.add({
-    position: position5,
-    orientation: new Cesium.VelocityOrientationProperty(position5), // Automatically set the vehicle's orientation to the direction it's facing.
-    description: `Power: ${dataPoint3.power},\nFrequency: ${dataPoint3.freq}, \nBubble: ${dataPoint3.bubble}`,
-    point: { pixelSize: 10, color: Cesium.Color.RED },
-  });
-  
+  position: position,
+  orientation: new Cesium.VelocityOrientationProperty(position), // Automatically set the vehicle's orientation to the direction it's facing.
+  point: { pixelSize: 15, color: Cesium.Color.GREEN },
+
+});
+
+
+
 
 // calls 
-viewer.flyTo(pointEntity);
+viewer.flyTo(vehicleEntity);
